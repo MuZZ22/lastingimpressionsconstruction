@@ -1,9 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Phone, ArrowRight, ShieldCheck, Clock, MapPin, Wrench, Cable, Zap, CheckCircle2 } from "lucide-react";
-import heroImg from "@/assets/hero-drilling.jpg";
-import hddImg from "@/assets/service-hdd.jpg";
-import fiberImg from "@/assets/service-fiber.jpg";
-import utilityImg from "@/assets/service-utility.jpg";
+import drillImg from "@/assets/equipment-drill.png";
+import excavatorImg from "@/assets/equipment-excavator.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -12,8 +10,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Trusted horizontal directional drilling, fiber optic, and underground utility contractor serving Perry & Northeast Ohio. Get a free quote today." },
       { property: "og:title", content: "Precision Underground Solutions You Can Trust — Lasting Impressions" },
       { property: "og:description", content: "HDD, fiber optic, and utility installation across Northeast Ohio." },
-      { property: "og:image", content: heroImg },
-      { name: "twitter:image", content: heroImg },
+      { property: "og:image", content: drillImg },
+      { name: "twitter:image", content: drillImg },
     ],
   }),
   component: HomePage,
@@ -25,11 +23,11 @@ function HomePage() {
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-surface text-surface-foreground">
         <img
-          src={heroImg}
-          alt="Horizontal directional drilling rig at a construction site"
+          src={drillImg}
+          alt="Ditch Witch JT20 horizontal directional drilling rig"
           width={1920}
           height={1080}
-          className="absolute inset-0 h-full w-full object-cover opacity-40"
+          className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-hero-overlay" />
         <div className="relative mx-auto max-w-7xl px-4 md:px-6 py-24 md:py-36">
@@ -92,31 +90,19 @@ function HomePage() {
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {[
-              { img: hddImg, icon: Wrench, title: "Horizontal Directional Drilling", desc: "Trenchless boring under roads, driveways, and landscapes — minimal disruption, maximum precision." },
-              { img: fiberImg, icon: Cable, title: "Fiber Optic Installation", desc: "Reliable underground fiber installation for residential, commercial, and contractor partnerships." },
-              { img: utilityImg, icon: Zap, title: "Underground Utilities", desc: "Water, gas, electrical, and light pole power lines installed safely and to spec." },
+              { icon: Wrench, title: "Horizontal Directional Drilling", desc: "Trenchless boring under roads, driveways, and landscapes — minimal disruption, maximum precision." },
+              { icon: Cable, title: "Fiber Optic Installation", desc: "Reliable underground fiber installation for residential, commercial, and contractor partnerships." },
+              { icon: Zap, title: "Underground Utilities", desc: "Water, gas, electrical, and light pole power lines installed safely and to spec." },
             ].map((s) => (
-              <article key={s.title} className="group overflow-hidden rounded-lg border border-border bg-card shadow-elevate">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={s.img}
-                    alt={s.title}
-                    loading="lazy"
-                    width={1280}
-                    height={896}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute top-4 left-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-accent text-accent-foreground">
-                    <s.icon className="h-5 w-5" />
-                  </span>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display text-xl font-bold text-card-foreground">{s.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
-                  <Link to="/services" className="mt-4 inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wider text-accent hover:gap-2 transition-all">
-                    Learn more <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
+              <article key={s.title} className="group overflow-hidden rounded-lg border border-border bg-card shadow-elevate p-6">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-md bg-accent text-accent-foreground">
+                  <s.icon className="h-6 w-6" />
+                </span>
+                <h3 className="mt-4 font-display text-xl font-bold text-card-foreground">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+                <Link to="/services" className="mt-4 inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wider text-accent hover:gap-2 transition-all">
+                  Learn more <ArrowRight className="h-4 w-4" />
+                </Link>
               </article>
             ))}
           </div>
@@ -150,14 +136,14 @@ function HomePage() {
             </ul>
           </div>
           <div className="relative">
-            <div className="aspect-[4/5] overflow-hidden rounded-lg shadow-elevate">
+            <div className="aspect-[4/3] overflow-hidden rounded-lg shadow-elevate bg-card flex items-center justify-center p-6">
               <img
-                src={hddImg}
-                alt="Close-up of HDD drilling equipment"
+                src={excavatorImg}
+                alt="Compact excavator used for underground utility installation"
                 loading="lazy"
                 width={1280}
                 height={896}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 hidden md:block bg-accent text-accent-foreground p-6 rounded-lg shadow-glow max-w-xs">

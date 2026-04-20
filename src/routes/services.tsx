@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Wrench, Cable, Zap, Droplet, Flame, Lightbulb, CheckCircle2 } from "lucide-react";
 import { CTASection } from "@/components/CTASection";
-import hddImg from "@/assets/service-hdd.jpg";
-import fiberImg from "@/assets/service-fiber.jpg";
-import utilityImg from "@/assets/service-utility.jpg";
+import drillImg from "@/assets/equipment-drill.png";
+import excavatorImg from "@/assets/equipment-excavator.png";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -12,8 +11,8 @@ export const Route = createFileRoute("/services")({
       { name: "description", content: "Horizontal directional drilling, fiber optic installation, water, gas, and electrical line installation across Northeast Ohio." },
       { property: "og:title", content: "Underground Construction Services — Lasting Impressions" },
       { property: "og:description", content: "Specialized HDD, fiber, and utility installation services in NE Ohio." },
-      { property: "og:image", content: hddImg },
-      { name: "twitter:image", content: hddImg },
+      { property: "og:image", content: drillImg },
+      { name: "twitter:image", content: drillImg },
     ],
   }),
   component: ServicesPage,
@@ -23,7 +22,7 @@ const services = [
   {
     id: "hdd",
     icon: Wrench,
-    img: hddImg,
+    img: drillImg,
     title: "Horizontal Directional Drilling (HDD)",
     desc: "Trenchless installation of pipes, conduits, and cables under roads, driveways, sidewalks, landscaping, and waterways. Less disruption. Less restoration cost. More precision.",
     bullets: [
@@ -36,7 +35,7 @@ const services = [
   {
     id: "fiber",
     icon: Cable,
-    img: fiberImg,
+    img: drillImg,
     title: "Fiber Optic Installation",
     desc: "Reliable underground fiber installation for ISPs, contractors, and direct clients. From residential service drops to large commercial runs, we install conduit and cable to spec.",
     bullets: [
@@ -49,7 +48,7 @@ const services = [
   {
     id: "utilities",
     icon: Zap,
-    img: utilityImg,
+    img: excavatorImg,
     title: "Underground Utility Installation",
     desc: "Water, gas, electrical — installed safely and to code. From single residential service lines to commercial site work and light pole power, we handle the underground side.",
     bullets: [
@@ -85,14 +84,14 @@ function ServicesPage() {
               id={s.id}
               className={`grid gap-10 md:grid-cols-2 md:items-center ${i % 2 ? "md:[&>div:first-child]:order-2" : ""}`}
             >
-              <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-elevate">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-elevate bg-card flex items-center justify-center p-6">
                 <img
                   src={s.img}
                   alt={s.title}
                   loading="lazy"
                   width={1280}
                   height={896}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
                 <span className="absolute top-4 left-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-accent text-accent-foreground">
                   <s.icon className="h-6 w-6" />

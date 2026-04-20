@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CheckCircle2, HardHat, Award, Users } from "lucide-react";
 import { CTASection } from "@/components/CTASection";
-import ownerImg from "@/assets/about-owner.jpg";
+import drillImg from "@/assets/equipment-drill.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -10,8 +10,8 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: "Meet Shaun Liddy and learn the story of Lasting Impressions Construction — a trusted underground utility contractor based in Perry, Ohio." },
       { property: "og:title", content: "About Lasting Impressions Construction" },
       { property: "og:description", content: "Owner-operated HDD and underground utility specialist serving Northeast Ohio." },
-      { property: "og:image", content: ownerImg },
-      { name: "twitter:image", content: ownerImg },
+      { property: "og:image", content: drillImg },
+      { name: "twitter:image", content: drillImg },
     ],
   }),
   component: AboutPage,
@@ -34,34 +34,23 @@ function AboutPage() {
       </section>
 
       <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 grid gap-12 md:grid-cols-2 md:items-center">
-          <div className="relative">
-            <div className="aspect-[4/5] overflow-hidden rounded-lg shadow-elevate">
-              <img
-                src={ownerImg}
-                alt="Shaun Liddy, owner of Lasting Impressions Construction"
-                width={1280}
-                height={1280}
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </div>
+        <div className="mx-auto max-w-7xl px-4 md:px-6">
           <div>
             <p className="text-accent font-semibold uppercase tracking-[0.25em] text-xs">Meet the Owner</p>
-            <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-foreground">
+            <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-foreground max-w-3xl">
               Shaun Liddy — Operator. Owner. Northeast Ohioan.
             </h2>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground max-w-3xl">
               With years of hands-on experience in horizontal directional drilling and underground
               utility installation, Shaun founded Lasting Impressions Construction to bring honest,
               high-quality work to homeowners and contractors alike.
             </p>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground max-w-3xl">
               Whether you need a single residential water line or a large-scale fiber subcontracting
               partner, you'll work directly with the operator on your job site — no middlemen,
               no excuses.
             </p>
-            <ul className="mt-8 grid gap-3">
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2 max-w-3xl">
               {[
                 "Specialized HDD and trenchless installation experience",
                 "Trusted by residential clients and large contractors",
