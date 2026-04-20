@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CTASection } from "@/components/CTASection";
 import drillImg from "@/assets/equipment-drill.png";
 import excavatorImg from "@/assets/equipment-excavator.png";
+import jobUtilityBox from "@/assets/job-utility-box.png";
+import jobBorePit from "@/assets/job-bore-pit.png";
+import jobHddOnsite from "@/assets/job-hdd-onsite.png";
+import jobVaultInstall from "@/assets/job-vault-install.png";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -10,17 +14,32 @@ export const Route = createFileRoute("/projects")({
       { name: "description", content: "See our underground construction work — HDD, fiber, and utility installation projects across Northeast Ohio." },
       { property: "og:title", content: "Project Gallery — Lasting Impressions Construction" },
       { property: "og:description", content: "HDD, trenchless, and underground utility work across Northeast Ohio." },
-      { property: "og:image", content: drillImg },
-      { name: "twitter:image", content: drillImg },
+      { property: "og:image", content: jobHddOnsite },
+      { name: "twitter:image", content: jobHddOnsite },
     ],
   }),
   component: ProjectsPage,
 });
 
-const projects = [
-  { img: drillImg, title: "Ditch Witch JT20 — HDD Rig", tag: "Directional Drilling", desc: "Our directional drill, ready for trenchless boring under roads, driveways, and landscapes." },
-  { img: excavatorImg, title: "Compact Excavator", tag: "Utilities", desc: "Versatile compact excavator used for utility installs, service lines, and site prep." },
-] as const;
+type Project = {
+  img: string;
+  title: string;
+  tag: string;
+  desc: string;
+  contain?: boolean;
+};
+
+const equipment: Project[] = [
+  { img: drillImg, title: "Ditch Witch JT20 — HDD Rig", tag: "Directional Drilling", desc: "Our directional drill, ready for trenchless boring under roads, driveways, and landscapes.", contain: true },
+  { img: excavatorImg, title: "Compact Excavator", tag: "Utilities", desc: "Versatile compact excavator used for utility installs, service lines, and site prep.", contain: true },
+];
+
+const jobs: Project[] = [
+  { img: jobHddOnsite, title: "On-Site HDD Bore", tag: "Directional Drilling", desc: "Drill setup and bore in progress on a residential utility installation." },
+  { img: jobBorePit, title: "Bore Pit & Rod Entry", tag: "HDD", desc: "Clean bore entry pit through asphalt — trenchless installation in action." },
+  { img: jobVaultInstall, title: "Utility Vault Install", tag: "Utilities", desc: "Precast utility vault set in place and ready for backfill and final connections." },
+  { img: jobUtilityBox, title: "Service Line Connection", tag: "Underground Utility", desc: "Underground service line tie-in prepped for inspection and restoration." },
+];
 
 function ProjectsPage() {
   return (
@@ -28,12 +47,12 @@ function ProjectsPage() {
       <section className="relative isolate overflow-hidden bg-surface text-surface-foreground py-20 md:py-28">
         <div className="absolute inset-0 bg-hero-overlay" />
         <div className="relative mx-auto max-w-7xl px-4 md:px-6">
-          <p className="text-accent font-semibold uppercase tracking-[0.25em] text-xs">Our Equipment</p>
+          <p className="text-accent font-semibold uppercase tracking-[0.25em] text-xs">Project Gallery</p>
           <h1 className="mt-3 font-display text-4xl md:text-6xl font-bold max-w-3xl">
             Real equipment. Real work. Real results.
           </h1>
           <p className="mt-6 max-w-2xl text-surface-foreground/80 text-lg">
-            The right machines for underground utility, HDD, and fiber installation across
+            A look at recent underground utility, HDD, and fiber installation projects across
             Northeast Ohio.
           </p>
         </div>
@@ -41,27 +60,17 @@ function ProjectsPage() {
 
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <div className="grid gap-8 sm:grid-cols-2">
-            {projects.map((p) => (
-              <figure key={p.title} className="group overflow-hidden rounded-lg border border-border bg-card shadow-elevate">
-                <div className="relative aspect-[4/3] overflow-hidden bg-card flex items-center justify-center p-6">
-                  <img
-                    src={p.img}
-                    alt={p.title}
-                    loading="lazy"
-                    width={1280}
-                    height={896}
-                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute top-3 left-3 rounded-full bg-accent px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-accent-foreground">
-                    {p.tag}
-                  </span>
-                </div>
-                <figcaption className="p-5 border-t border-border">
-                  <h3 className="font-display text-lg font-bold text-card-foreground">{p.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
-                </figcaption>
-              </figure>
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">Recent Job Site Work</h2>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {jobs.map((p) => (
+              <ProjectCard key={p.title} project={p} />
+            ))}
+          </div>
+
+          <h2 className="mt-20 font-display text-2xl md:text-3xl font-bold text-foreground">Our Equipment</h2>
+          <div className="mt-8 grid gap-8 sm:grid-cols-2">
+            {equipment.map((p) => (
+              <ProjectCard key={p.title} project={p} />
             ))}
           </div>
         </div>
@@ -69,5 +78,29 @@ function ProjectsPage() {
 
       <CTASection />
     </>
+  );
+}
+
+function ProjectCard({ project: p }: { project: Project }) {
+  return (
+    <figure className="group overflow-hidden rounded-lg border border-border bg-card shadow-elevate">
+      <div className={`relative aspect-[4/3] overflow-hidden ${p.contain ? "bg-card flex items-center justify-center p-6" : ""}`}>
+        <img
+          src={p.img}
+          alt={p.title}
+          loading="lazy"
+          width={1280}
+          height={896}
+          className={`h-full w-full ${p.contain ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-105`}
+        />
+        <span className="absolute top-3 left-3 rounded-full bg-accent px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-accent-foreground">
+          {p.tag}
+        </span>
+      </div>
+      <figcaption className="p-5 border-t border-border">
+        <h3 className="font-display text-lg font-bold text-card-foreground">{p.title}</h3>
+        <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
+      </figcaption>
+    </figure>
   );
 }
