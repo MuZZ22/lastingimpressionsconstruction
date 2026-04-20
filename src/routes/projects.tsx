@@ -6,11 +6,6 @@ import jobUtilityBox from "@/assets/job-utility-box.png";
 import jobBorePit from "@/assets/job-bore-pit.png";
 import jobHddOnsite from "@/assets/job-hdd-onsite.png";
 import jobVaultInstall from "@/assets/job-vault-install.png";
-import restore1 from "@/assets/restore-1.png";
-import restore2 from "@/assets/restore-2.png";
-import restore3 from "@/assets/restore-3.png";
-import restore4 from "@/assets/restore-4.png";
-import restore5 from "@/assets/restore-5.png";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -46,14 +41,6 @@ const jobs: Project[] = [
   { img: jobUtilityBox, title: "Service Line Connection", tag: "Underground Utility", desc: "Underground service line tie-in prepped for inspection and restoration." },
 ];
 
-const restoration: Project[] = [
-  { img: restore1, title: "Bore Pit Backfill", tag: "Restoration", desc: "Excavated bore pit backfilled and graded — ready for surface restoration." },
-  { img: restore2, title: "Lawn Restoration", tag: "Restoration", desc: "Trench path restored across a residential lawn after utility install." },
-  { img: restore3, title: "Seed & Straw Coverage", tag: "Restoration", desc: "Disturbed ground reseeded and protected with straw to promote regrowth." },
-  { img: restore4, title: "Service Box & Lawn Repair", tag: "Restoration", desc: "Utility access box set flush with grade — surrounding turf restored." },
-  { img: restore5, title: "Clean Patch Restoration", tag: "Restoration", desc: "Compact, tidy restoration around a finished utility access point." },
-];
-
 function ProjectsPage() {
   return (
     <>
@@ -76,14 +63,6 @@ function ProjectsPage() {
           <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">Recent Job Site Work</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {jobs.map((p) => (
-              <ProjectCard key={p.title} project={p} />
-            ))}
-          </div>
-
-          <h2 className="mt-20 font-display text-2xl md:text-3xl font-bold text-foreground">Surface Restoration</h2>
-          <p className="mt-2 text-muted-foreground max-w-2xl">We leave job sites clean — backfilled, graded, seeded, and ready to recover.</p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {restoration.map((p) => (
               <ProjectCard key={p.title} project={p} />
             ))}
           </div>
