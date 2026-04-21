@@ -9,7 +9,7 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact | Lasting Impressions Construction — Perry, Ohio" },
       { name: "description", content: "Contact Lasting Impressions Construction for underground utility, HDD, and fiber optic projects in Northeast Ohio. Call 440-228-9190." },
       { property: "og:title", content: "Contact Lasting Impressions Construction" },
-      { property: "og:description", content: "Get a free quote — call 440-228-9190 or email Lastingimpressions11@gmail.com" },
+      { property: "og:description", content: "Get a free quote — call 440-228-9190 or email Lastingimpressions11@outlook.com" },
     ],
   }),
   component: ContactPage,
@@ -47,7 +47,7 @@ function ContactPage() {
     const body = encodeURIComponent(
       `Name: ${parsed.data.name}\nPhone: ${parsed.data.phone}\nEmail: ${parsed.data.email}\n\nProject Details:\n${parsed.data.details}`
     );
-    window.location.href = `mailto:Lastingimpressions11@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:Lastingimpressions11@outlook.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
   }
 
@@ -121,8 +121,8 @@ function ContactPage() {
                   <span className="flex h-10 w-10 items-center justify-center rounded-md bg-accent text-accent-foreground"><Mail className="h-5 w-5" /></span>
                   <div>
                     <p className="text-xs uppercase tracking-wider text-surface-foreground/60">Email</p>
-                    <a href="mailto:Lastingimpressions11@gmail.com" className="font-bold hover:text-accent break-all">
-                      Lastingimpressions11@gmail.com
+                    <a href="mailto:Lastingimpressions11@outlook.com" className="font-bold hover:text-accent break-all">
+                      Lastingimpressions11@outlook.com
                     </a>
                   </div>
                 </li>
