@@ -1,18 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Wrench, Cable, Zap, Droplet, Flame, Lightbulb, CheckCircle2 } from "lucide-react";
 import { CTASection } from "@/components/CTASection";
-import drillImg from "@/assets/equipment-drill.png";
-import excavatorImg from "@/assets/equipment-excavator.png";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services | HDD, Fiber Optic & Utility Installation Ohio" },
-      { name: "description", content: "Horizontal directional drilling, fiber optic installation, water, gas, and electrical line installation across Northeast Ohio." },
+      { title: "Services | HDD, Conduit & Utility Installation Ohio" },
+      { name: "description", content: "Horizontal directional drilling, conduit installation, water, gas, and electrical line installation across Northeast Ohio." },
       { property: "og:title", content: "Underground Construction Services — Lasting Impressions" },
-      { property: "og:description", content: "Specialized HDD, fiber, and utility installation services in NE Ohio." },
-      { property: "og:image", content: drillImg },
-      { name: "twitter:image", content: drillImg },
+      { property: "og:description", content: "Specialized HDD, conduit, and utility installation services in NE Ohio." },
     ],
   }),
   component: ServicesPage,
@@ -22,7 +18,6 @@ const services = [
   {
     id: "hdd",
     icon: Wrench,
-    img: drillImg,
     title: "Horizontal Directional Drilling (HDD)",
     desc: "Trenchless installation of pipes, conduits, and cables under roads, driveways, sidewalks, landscaping, and waterways. Less disruption. Less restoration cost. More precision.",
     bullets: [
@@ -35,20 +30,18 @@ const services = [
   {
     id: "fiber",
     icon: Cable,
-    img: drillImg,
-    title: "Fiber Optic Installation",
-    desc: "Reliable underground fiber installation for ISPs, contractors, and direct clients. From residential service drops to large commercial runs, we install conduit and cable to spec.",
+    title: "Conduit Installation & Repair",
+    desc: "Underground conduit installation for fiber, telecom, and power applications. We install new conduit pathways and perform spot fixes on existing conduit runs to keep projects moving.",
     bullets: [
-      "Residential and commercial fiber drops",
+      "New conduit installation for residential and commercial sites",
       "Subcontracting for ISPs and prime contractors",
-      "Conduit installation, locating, and pulls",
-      "Clean, documented, and inspection-ready",
+      "Spot fixes & repairs on damaged or failed existing conduit",
+      "Proofing, locating, and inspection-ready installs",
     ],
   },
   {
     id: "utilities",
     icon: Zap,
-    img: excavatorImg,
     title: "Underground Utility Installation",
     desc: "Water, gas, electrical — installed safely and to code. From single residential service lines to commercial site work and light pole power, we handle the underground side.",
     bullets: [
@@ -70,45 +63,35 @@ function ServicesPage() {
             Underground construction, done with precision.
           </h1>
           <p className="mt-6 max-w-2xl text-surface-foreground/80 text-lg">
-            From horizontal directional drilling to fiber optic and utility installation —
+            From horizontal directional drilling to conduit and utility installation —
             we're your one-call underground partner in Northeast Ohio.
           </p>
         </div>
       </section>
 
       <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 space-y-20 md:space-y-28">
-          {services.map((s, i) => (
+        <div className="mx-auto max-w-7xl px-4 md:px-6 space-y-16">
+          {services.map((s) => (
             <article
               key={s.id}
               id={s.id}
-              className={`grid gap-10 md:grid-cols-2 md:items-center ${i % 2 ? "md:[&>div:first-child]:order-2" : ""}`}
+              className="rounded-lg border border-border bg-card p-8 md:p-10 shadow-elevate"
             >
-              <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-elevate bg-card flex items-center justify-center p-6">
-                <img
-                  src={s.img}
-                  alt={s.title}
-                  loading="lazy"
-                  width={1280}
-                  height={896}
-                  className="h-full w-full object-contain"
-                />
-                <span className="absolute top-4 left-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-accent text-accent-foreground">
+              <div className="flex items-center gap-4">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-md bg-accent text-accent-foreground shrink-0">
                   <s.icon className="h-6 w-6" />
                 </span>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-card-foreground">{s.title}</h2>
               </div>
-              <div>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">{s.title}</h2>
-                <p className="mt-4 text-muted-foreground">{s.desc}</p>
-                <ul className="mt-6 space-y-3">
-                  {s.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-0.5 h-5 w-5 text-accent shrink-0" />
-                      <span className="text-foreground">{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className="mt-5 text-muted-foreground max-w-3xl">{s.desc}</p>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                {s.bullets.map((b) => (
+                  <li key={b} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-accent shrink-0" />
+                    <span className="text-card-foreground">{b}</span>
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
