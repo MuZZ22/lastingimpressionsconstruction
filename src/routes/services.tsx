@@ -59,12 +59,12 @@ function ServicesPage() {
       <section className="bg-surface text-surface-foreground py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
           <p className="text-accent font-semibold uppercase tracking-[0.25em] text-xs">Our Services</p>
-          <h1 className="mt-3 font-display text-4xl md:text-6xl font-bold max-w-3xl">
-            Underground construction, done with precision.
+          <h1 className="mt-3 font-display text-4xl md:text-6xl font-bold max-w-4xl">
+            Expert Underground Solutions, Built With Precision.
           </h1>
           <p className="mt-6 max-w-2xl text-surface-foreground/80 text-lg">
-            From horizontal directional drilling to conduit and utility installation —
-            we're your one-call underground partner in Northeast Ohio.
+            Specializing in horizontal directional drilling, conduit, and utility installation —
+            your trusted partner for dependable underground work in Northeast Ohio.
           </p>
         </div>
       </section>
