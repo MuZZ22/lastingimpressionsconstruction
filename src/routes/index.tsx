@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Phone, ArrowRight, ShieldCheck, Clock, MapPin, Wrench, Cable, Zap, CheckCircle2 } from "lucide-react";
 import drillImg from "@/assets/equipment-drill.png";
-import excavatorImg from "@/assets/equipment-excavator.png";
+import excavatorImg from "@/assets/equipment-excavator-clean.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
