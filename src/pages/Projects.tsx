@@ -1,18 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
 import { Wrench, Cable, Zap, CheckCircle2 } from "lucide-react";
 import { CTASection } from "@/components/CTASection";
-
-export const Route = createFileRoute("/projects")({
-  head: () => ({
-    meta: [
-      { title: "Projects & Capabilities | Lasting Impressions Construction" },
-      { name: "description", content: "Underground construction capabilities — HDD, conduit, and utility installation projects across Northeast Ohio." },
-      { property: "og:title", content: "Projects & Capabilities — Lasting Impressions Construction" },
-      { property: "og:description", content: "HDD, trenchless, and underground utility work across Northeast Ohio." },
-    ],
-  }),
-  component: ProjectsPage,
-});
+import { usePageMeta } from "@/lib/usePageMeta";
 
 const capabilities = [
   {
@@ -42,7 +30,13 @@ const stats = [
   { value: "Licensed & Insured", label: "Peace of Mind" },
 ];
 
-function ProjectsPage() {
+export default function ProjectsPage() {
+  usePageMeta({
+    title: "Projects & Capabilities | Lasting Impressions Construction",
+    description: "Underground construction capabilities — HDD, conduit, and utility installation projects across Northeast Ohio.",
+    ogTitle: "Projects & Capabilities — Lasting Impressions Construction",
+    ogDescription: "HDD, trenchless, and underground utility work across Northeast Ohio.",
+  });
   return (
     <>
       <section className="relative isolate overflow-hidden bg-surface text-surface-foreground py-20 md:py-28">
@@ -92,14 +86,8 @@ function ProjectsPage() {
               Have a project in mind?
             </h3>
             <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
-              Tell us what you need installed, repaired, or bored — we'll walk the site and give you a straight answer.
+              Tell us what you need installed, repaired, or bored — we'll walk the site and scope it out.
             </p>
-            <Link
-              to="/contact"
-              className="mt-6 inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-bold text-accent-foreground hover:opacity-90"
-            >
-              Request a Quote
-            </Link>
           </div>
         </div>
       </section>

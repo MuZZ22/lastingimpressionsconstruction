@@ -1,23 +1,17 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Phone, ArrowRight, ShieldCheck, Clock, MapPin, Wrench, Cable, Zap, CheckCircle2 } from "lucide-react";
 import drillImg from "@/assets/equipment-drill.png";
 import excavatorImg from "@/assets/equipment-excavator-clean.png";
+import { usePageMeta } from "@/lib/usePageMeta";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Lasting Impressions Construction | HDD & Underground Utility Ohio" },
-      { name: "description", content: "Trusted horizontal directional drilling, fiber optic, and underground utility contractor serving Perry & Northeast Ohio. Get a free quote today." },
-      { property: "og:title", content: "Precision Underground Solutions You Can Trust — Lasting Impressions" },
-      { property: "og:description", content: "HDD, fiber optic, and utility installation across Northeast Ohio." },
-      { property: "og:image", content: drillImg },
-      { name: "twitter:image", content: drillImg },
-    ],
-  }),
-  component: HomePage,
-});
-
-function HomePage() {
+export default function HomePage() {
+  usePageMeta({
+    title: "Lasting Impressions Construction | HDD & Underground Utility Ohio",
+    description: "Trusted horizontal directional drilling, fiber optic, and underground utility contractor serving Perry & Northeast Ohio. Get a free quote today.",
+    ogTitle: "Precision Underground Solutions You Can Trust — Lasting Impressions",
+    ogDescription: "HDD, fiber optic, and utility installation across Northeast Ohio.",
+    ogImage: drillImg,
+  });
   return (
     <>
       {/* HERO */}

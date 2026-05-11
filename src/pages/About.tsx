@@ -1,23 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { CheckCircle2, HardHat, Award, Users } from "lucide-react";
 import { CTASection } from "@/components/CTASection";
 import drillImg from "@/assets/equipment-drill.png";
+import { usePageMeta } from "@/lib/usePageMeta";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About Shaun Liddy | Lasting Impressions Construction Ohio" },
-      { name: "description", content: "Meet Shaun Liddy and learn the story of Lasting Impressions Construction — a trusted underground utility contractor based in Perry, Ohio." },
-      { property: "og:title", content: "About Lasting Impressions Construction" },
-      { property: "og:description", content: "Owner-operated HDD and underground utility specialist serving Northeast Ohio." },
-      { property: "og:image", content: drillImg },
-      { name: "twitter:image", content: drillImg },
-    ],
-  }),
-  component: AboutPage,
-});
-
-function AboutPage() {
+export default function AboutPage() {
+  usePageMeta({
+    title: "About Shaun Liddy | Lasting Impressions Construction Ohio",
+    description: "Meet Shaun Liddy and learn the story of Lasting Impressions Construction — a trusted underground utility contractor based in Perry, Ohio.",
+    ogTitle: "About Lasting Impressions Construction",
+    ogDescription: "Owner-operated HDD and underground utility specialist serving Northeast Ohio.",
+    ogImage: drillImg,
+  });
   return (
     <>
       <section className="bg-surface text-surface-foreground py-20 md:py-28">

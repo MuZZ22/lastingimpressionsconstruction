@@ -1,18 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Wrench, Cable, Zap, Droplet, Flame, Lightbulb, CheckCircle2 } from "lucide-react";
 import { CTASection } from "@/components/CTASection";
-
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services | HDD, Conduit & Utility Installation Ohio" },
-      { name: "description", content: "Horizontal directional drilling, conduit installation, water, gas, and electrical line installation across Northeast Ohio." },
-      { property: "og:title", content: "Underground Construction Services — Lasting Impressions" },
-      { property: "og:description", content: "Specialized HDD, conduit, and utility installation services in NE Ohio." },
-    ],
-  }),
-  component: ServicesPage,
-});
+import { usePageMeta } from "@/lib/usePageMeta";
 
 const services = [
   {
@@ -53,7 +41,13 @@ const services = [
   },
 ] as const;
 
-function ServicesPage() {
+export default function ServicesPage() {
+  usePageMeta({
+    title: "Services | HDD, Conduit & Utility Installation Ohio",
+    description: "Horizontal directional drilling, conduit installation, water, gas, and electrical line installation across Northeast Ohio.",
+    ogTitle: "Underground Construction Services — Lasting Impressions",
+    ogDescription: "Specialized HDD, conduit, and utility installation services in NE Ohio.",
+  });
   return (
     <>
       <section className="bg-surface text-surface-foreground py-20 md:py-28">

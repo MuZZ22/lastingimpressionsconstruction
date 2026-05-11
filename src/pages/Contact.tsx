@@ -1,19 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
-
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact | Lasting Impressions Construction — Perry, Ohio" },
-      { name: "description", content: "Contact Lasting Impressions Construction for underground utility, HDD, and fiber optic projects in Northeast Ohio. Call 440-228-9190." },
-      { property: "og:title", content: "Contact Lasting Impressions Construction" },
-      { property: "og:description", content: "Get a free quote — call 440-228-9190 or email Lastingimpressions11@outlook.com" },
-    ],
-  }),
-  component: ContactPage,
-});
+import { usePageMeta } from "@/lib/usePageMeta";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
@@ -22,7 +10,13 @@ const schema = z.object({
   details: z.string().trim().min(10, "Tell us a bit about your project").max(2000),
 });
 
-function ContactPage() {
+export default function ContactPage() {
+  usePageMeta({
+    title: "Contact | Lasting Impressions Construction — Perry, Ohio",
+    description: "Contact Lasting Impressions Construction for underground utility, HDD, and fiber optic projects in Northeast Ohio. Call 440-228-9190.",
+    ogTitle: "Contact Lasting Impressions Construction",
+    ogDescription: "Get a free quote — call 440-228-9190 or email Lastingimpressions11@outlook.com",
+  });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
 
@@ -67,7 +61,6 @@ function ContactPage() {
 
       <section className="py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-4 md:px-6 grid gap-10 lg:grid-cols-[1.2fr_1fr]">
-          {/* FORM */}
           <div className="rounded-lg border border-border bg-card p-6 md:p-10 shadow-elevate">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-card-foreground">Request a Free Quote</h2>
             <p className="mt-2 text-sm text-muted-foreground">
@@ -105,7 +98,6 @@ function ContactPage() {
             </form>
           </div>
 
-          {/* CONTACT INFO + MAP */}
           <div className="space-y-6">
             <div className="rounded-lg bg-surface text-surface-foreground p-6 md:p-8 shadow-elevate">
               <h3 className="font-display text-xl font-bold">Reach Us Directly</h3>
