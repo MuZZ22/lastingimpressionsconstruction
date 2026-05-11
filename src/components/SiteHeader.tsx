@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { Phone, Menu, X, HardHat } from "lucide-react";
 import { useState } from "react";
 
 const PHONE = "440-228-9190";
 
 const nav = [
-  { to: "/", label: "Home" },
+  { to: "/", label: "Home", end: true },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/projects", label: "Projects" },
@@ -29,15 +29,18 @@ export function SiteHeader() {
 
         <nav className="hidden lg:flex items-center gap-8">
           {nav.map((n) => (
-            <Link
+            <NavLink
               key={n.to}
               to={n.to}
-              className="text-sm font-semibold uppercase tracking-wider text-surface-foreground/80 hover:text-accent transition-colors"
-              activeProps={{ className: "text-accent" }}
-              activeOptions={{ exact: n.to === "/" }}
+              end={n.end}
+              className={({ isActive }) =>
+                `text-sm font-semibold uppercase tracking-wider transition-colors hover:text-accent ${
+                  isActive ? "text-accent" : "text-surface-foreground/80"
+                }`
+              }
             >
               {n.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
@@ -61,16 +64,19 @@ export function SiteHeader() {
         <div className="lg:hidden border-t border-white/10 bg-surface">
           <div className="flex flex-col px-4 py-4">
             {nav.map((n) => (
-              <Link
+              <NavLink
                 key={n.to}
                 to={n.to}
+                end={n.end}
                 onClick={() => setOpen(false)}
-                className="py-3 text-sm font-semibold uppercase tracking-wider text-surface-foreground/90"
-                activeProps={{ className: "text-accent" }}
-                activeOptions={{ exact: n.to === "/" }}
+                className={({ isActive }) =>
+                  `py-3 text-sm font-semibold uppercase tracking-wider ${
+                    isActive ? "text-accent" : "text-surface-foreground/90"
+                  }`
+                }
               >
                 {n.label}
-              </Link>
+              </NavLink>
             ))}
             <a
               href={`tel:${PHONE}`}
